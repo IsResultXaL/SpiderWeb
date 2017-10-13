@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 两颗红豆的爬虫
+ */
 public class RedBeansPageProcessor implements PageProcessor {
 
     public static int current_page = 1;
