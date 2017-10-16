@@ -42,4 +42,15 @@
 
     </insert>
 
+    <select id="selectUserByJiaYuanCount" resultType="java.lang.Long">
+        SELECT COUNT(1) FROM UserByJiaYuan
+    </select>
+
+    <!-- 大数据查询方式 -->
+    <select id="selectUserByJiaYuan" resultType="UserByJiaYuan">
+        SELECT * FROM UserByJiaYuan a
+        JOIN (SELECT user_id AS id FROM UserByJiaYuan limit #{offset}, #{pageSize}) b
+        ON a.user_id = b.id
+    </select>
+
 </mapper>
