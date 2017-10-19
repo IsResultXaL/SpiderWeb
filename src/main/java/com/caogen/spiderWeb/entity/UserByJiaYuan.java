@@ -22,6 +22,8 @@ public class UserByJiaYuan {
 
     private String localhost;       //居住地
 
+    private String province;        //省份
+
     private String image;           //头像Url
 
     private String randTag;         //标签1
@@ -108,6 +110,14 @@ public class UserByJiaYuan {
         this.localhost = localhost;
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     public String getImage() {
         return image;
     }
@@ -176,6 +186,7 @@ public class UserByJiaYuan {
                 ", height='" + height + '\'' +
                 ", education='" + education + '\'' +
                 ", localhost='" + localhost + '\'' +
+                ", province='" + province + '\'' +
                 ", image='" + image + '\'' +
                 ", randTag='" + randTag + '\'' +
                 ", randListTag='" + randListTag + '\'' +
