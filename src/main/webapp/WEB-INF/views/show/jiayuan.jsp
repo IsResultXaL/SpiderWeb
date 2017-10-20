@@ -212,7 +212,7 @@
         },
         visualMap: {
             min: 0,
-            max: 300000,
+            max: 250000,
             left: 'left',
             top: 'bottom',
             text: ['高', '低'],
@@ -319,7 +319,7 @@
                     position: 'left',
                     formatter: '{b} : {c}',
                     textStyle: {
-                        color: 'red'
+                        color: '#ff145c'
                     }
                 }
             },
@@ -334,7 +334,7 @@
                     position: 'left',
                     formatter: '{b} : {c}',
                     textStyle: {
-                        color: 'red'
+                        color: '#ff145c'
                     }
                 }
             },
@@ -349,7 +349,7 @@
                     position: 'left',
                     formatter: '{b} : {c}',
                     textStyle: {
-                        color: 'red'
+                        color: '#ff145c'
                     }
                 }
             },
