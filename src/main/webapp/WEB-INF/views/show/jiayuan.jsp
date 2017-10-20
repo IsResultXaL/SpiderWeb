@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>ECharts</title>
     <script type="text/javascript" src="/js/jquery.js"></script>
-    <script type="text/javascript" src="/js/echarts.js"></script>
+    <script type="text/javascript" src="/js/echarts.min.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
 </head>
 <body>
@@ -14,11 +14,10 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
-    function randomData() {
+    /*function randomData() {
         return Math.round(Math.random() * 1000);
     }
-    /*var data = ${json};
-    console.info(data);*/
+
     var data = [{
         name: '北京',
         valueMale: randomData(),
@@ -155,7 +154,9 @@
         name: '澳门',
         valueMale: randomData(),
         valueFemale: randomData(),
-    }];
+    }];*/
+
+    var data = ${json};
 
     var resultdata0 = [];
     var resultdata1 = [];
@@ -163,7 +164,7 @@
     var sum0 = 0;
     var sum1 = 0;
     var sum2 = 0;
-    var titledata = [];
+    //var titledata = [];
     for (var i = 0; i < data.length; i++) {
         var d0 = {
             name: data[i].name,
@@ -177,7 +178,7 @@
             name: data[i].name,
             value: data[i].valueFemale
         };
-        titledata.push(data[i].name)
+        //titledata.push(data[i].name);
         resultdata0.push(d0);
         resultdata1.push(d1);
         resultdata2.push(d2);
@@ -197,37 +198,9 @@
     option = {
         title: [{
             text: '世纪佳缘会员统计',
-            subtext: '学术研究',
+            subtext: '全部:'+sum0+'  男:'+sum1+'  女:'+sum2,
             left: 'center'
-        },{
-            text: '全部' +
-            ': ' +sum0,
-            right: 120,
-            top: 40,
-            width: 100,
-            textStyle: {
-                color: '#fff',
-                fontSize: 16
-            }
-        },{
-            text: "男: " +sum1,
-            right: 120,
-            top: 40,
-            width: 100,
-            textStyle: {
-                color: '#fff',
-                fontSize: 16
-            }
-        },{
-            text: "女: "+sum2,
-            right: 120,
-            top: 40,
-            width: 100,
-            textStyle: {
-                color: '#fff',
-                fontSize: 16
-            }
-        },],
+        }],
         tooltip: {
             trigger: 'item'
         },
@@ -239,7 +212,7 @@
         },
         visualMap: {
             min: 0,
-            max: 500000,
+            max: 300000,
             left: 'left',
             top: 'bottom',
             text: ['高', '低'],
@@ -248,7 +221,7 @@
             color: ['#c05050','#e5cf0d','#5ab1ef'],
             dimension: 0
         },
-        toolbox: {
+        /*toolbox: {
             show: true,
             orient: 'vertical',
             left: 'right',
@@ -260,7 +233,7 @@
                 restore: {},
                 saveAsImage: {}
             }
-        },
+        },*/
         grid: {
             right: 40,
             top: 100,
@@ -270,23 +243,11 @@
         xAxis: [{
             position: 'top',
             type: 'value',
-            boundaryGap: false,
-            splitLine: {
-                show: false
-            },
-            axisLine: {
-                show: false
-            },
-            axisTick: {
-                show: false
-            },
+            boundaryGap: false
         }],
         yAxis: [{
             type: 'category',
-            data: titledata,
-            axisTick: {
-                alignWithLabel: true
-            }
+            data: []
         }],
         series: [{
             z: 1,
@@ -354,15 +315,12 @@
             type: 'bar',
             label: {
                 normal: {
-                    show: true
-                },
-                emphasis: {
                     show: true,
-                }
-            },
-            itemStyle: {
-                emphasis: {
-                    color: "rgb(254,153,78)"
+                    position: 'left',
+                    formatter: '{b} : {c}',
+                    textStyle: {
+                        color: 'red'
+                    }
                 }
             },
             data: resultdata0
@@ -372,15 +330,12 @@
             type: 'bar',
             label: {
                 normal: {
-                    show: true
-                },
-                emphasis: {
-                    show: true
-                }
-            },
-            itemStyle: {
-                emphasis: {
-                    color: "rgb(254,153,78)"
+                    show: true,
+                    position: 'left',
+                    formatter: '{b} : {c}',
+                    textStyle: {
+                        color: 'red'
+                    }
                 }
             },
             data: resultdata1
@@ -390,15 +345,12 @@
             type: 'bar',
             label: {
                 normal: {
-                    show: true
-                },
-                emphasis: {
-                    show: true
-                }
-            },
-            itemStyle: {
-                emphasis: {
-                    color: "rgb(254,153,78)"
+                    show: true,
+                    position: 'left',
+                    formatter: '{b} : {c}',
+                    textStyle: {
+                        color: 'red'
+                    }
                 }
             },
             data: resultdata2
