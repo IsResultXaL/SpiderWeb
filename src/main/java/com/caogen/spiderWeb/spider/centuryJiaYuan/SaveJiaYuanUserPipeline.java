@@ -4,6 +4,7 @@ import com.caogen.spiderWeb.dao.SpiderDao;
 import com.caogen.spiderWeb.entity.UserByJiaYuan;
 import com.caogen.spiderWeb.util.StringUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -31,6 +32,8 @@ public class SaveJiaYuanUserPipeline implements Pipeline {
             for (int i = 0; i < userInfo.size(); i++) {
                 HashMap<String, Object> map = mapper.readValue(userInfo.get(i), HashMap.class);
                 UserByJiaYuan user = new UserByJiaYuan();
+                //BeanUtils.copyProperties(map, user);  //最好用Spring给我们提供的浅拷贝方法,只要保证属性一样就可以
+
                 user.setRealUid(Long.parseLong(StringUtil.getLongString(map.get("realUid"))));
                 user.setNickName(StringUtil.getString(map.get("nickname")));
                 user.setSex(StringUtil.getString(map.get("sex")));
