@@ -5,8 +5,8 @@
 <mapper namespace="com.caogen.spiderWeb.dao.VisualizationDao">
 
     <select id="getAllUserByJiaYuan" resultType="JiaYuanVisualization">
-        SELECT province AS name,SUM(userbyjiayuan.sex="男") AS valueMale ,SUM(userbyjiayuan.sex="女") AS valueFemale FROM userbyjiayuan
-        WHERE province IS NOT NULL GROUP BY province
+       SELECT IFNULL(province,'国外') AS name ,SUM(userbyjiayuan.sex="男") AS valueMale ,SUM(userbyjiayuan.sex="女") AS valueFemale
+       FROM userbyjiayuan GROUP BY province
     </select>
 
 </mapper>
